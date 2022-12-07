@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/NazarKobets/mongoose-fruits-database/issues"
   },
-  "homepage": "https://github.com/NazarKobets/mongoose-fruits-database#readme"
+  "homepage": "https://github.com/NazarKobets/mongoose-fruits-database#readme",
+  "dependencies": {
+    "mongodb": "^4.12.1"
+  }
 }
