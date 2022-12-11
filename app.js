@@ -25,5 +25,19 @@ main()
   .finally(() => client.close());
 
   const collection = db.collection('fruits');
-  const insertResult = await collection.insertMany([{ a: 1 }, { a: 2 }, { a: 3 }]);
+  const insertResult = await collection.insertMany([
+    { name: 'Tangerine',
+      score: 9,
+      review: 'Simply the best!'
+    },
+    { name: 'Pear',
+      score: '7',
+      review: 'Better version of apple'
+    },
+    {
+      name: 'Banana',
+      score: '5',
+      review: 'A bit too basic'
+    }
+  ]);
   console.log('Inserted documents =>', insertResult);
