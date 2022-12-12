@@ -1,43 +1,35 @@
-const { MongoClient } = require('mongodb');
+const mongoose = require('mongoose');
 
-// Connection URL
-const url = 'mongodb://localhost:27017';
-const client = new MongoClient(url, {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost:27017/fruitsDB');
 
-// Database Name
-const dbName = 'fruitsDB';
+const fruitSchema = new mongoose.Schema ({
+  name: String,
+  rating: Number,
+  review: String
+});
 
-async function main() {
-  // Use connect method to connect to the server
-  await client.connect();
-  console.log('Connected successfully to server');
-  const db = client.db(dbName);
-  const collection = db.collection('documents');
+const Fruit = mongoose.model('Fruit', fruitSchema);
 
-  // the following code examples can be pasted here...
+const fruit = new Fruit
 
-  return 'done.';
-}
+// const insertDocuments = (db, callback) => {
+//   const collection = db.collection('fruits');
+//   const insertResult = collection.insertMany([
+//     { name: 'Tangerine',
+//       score: 9,
+//       review: 'Simply the best!'
+//     },
+//     { name: 'Pear',
+//       score: '7',
+//       review: 'Better version of apple'
+//     },
+//     {
+//       name: 'Banana',
+//       score: '5',
+//       review: 'A bit too basic'
+//     }
+//   ]);
+//   console.log('Inserted documents =>', insertResult);
+// };
 
-main()
-  .then(console.log)
-  .catch(console.error)
-  .finally(() => client.close());
-
-  const collection = db.collection('fruits');
-  const insertResult = await collection.insertMany([
-    { name: 'Tangerine',
-      score: 9,
-      review: 'Simply the best!'
-    },
-    { name: 'Pear',
-      score: '7',
-      review: 'Better version of apple'
-    },
-    {
-      name: 'Banana',
-      score: '5',
-      review: 'A bit too basic'
-    }
-  ]);
-  console.log('Inserted documents =>', insertResult);
+mongoose.set('strictQuery', false);
