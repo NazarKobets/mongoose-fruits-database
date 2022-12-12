@@ -10,26 +10,12 @@ const fruitSchema = new mongoose.Schema ({
 
 const Fruit = mongoose.model('Fruit', fruitSchema);
 
-const fruit = new Fruit
+const fruit = new Fruit ({
+      name: 'Tangerine',
+      score: 9,
+      review: 'Simply the best'
+    });
 
-// const insertDocuments = (db, callback) => {
-//   const collection = db.collection('fruits');
-//   const insertResult = collection.insertMany([
-//     { name: 'Tangerine',
-//       score: 9,
-//       review: 'Simply the best!'
-//     },
-//     { name: 'Pear',
-//       score: '7',
-//       review: 'Better version of apple'
-//     },
-//     {
-//       name: 'Banana',
-//       score: '5',
-//       review: 'A bit too basic'
-//     }
-//   ]);
-//   console.log('Inserted documents =>', insertResult);
-// };
+fruit.save();
 
-mongoose.set('strictQuery', false);
+
